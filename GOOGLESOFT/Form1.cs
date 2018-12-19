@@ -19,7 +19,55 @@ namespace GOOGLESOFT
 
         private void GoogleStorageButton_Click(object sender, EventArgs e)
         {
+            this.SidePanel.Height = this.GoogleStorageButton.Height;
+            this.SidePanel.Top = this.GoogleStorageButton.Top;
+        }
 
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.HomeButton.Height;
+            this.SidePanel.Top = this.HomeButton.Top;
+        }
+
+        private void youtubeAPIButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.youtubeAPIButton.Height;
+            this.SidePanel.Top = this.youtubeAPIButton.Top;
+        }
+
+        private void GoogleDriveButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.GoogleDriveButton.Height;
+            this.SidePanel.Top = this.GoogleDriveButton.Top;
+        }
+
+        private void GmailButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.GmailButton.Height;
+            this.SidePanel.Top = this.GmailButton.Top;
+        }
+
+        private void GoogleComputeButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.GoogleComputeButton.Height;
+            this.SidePanel.Top = this.GoogleComputeButton.Top;
+        }
+
+        private void GoogleSheetButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.GoogleSheetButton.Height;
+            this.SidePanel.Top = this.GoogleSheetButton.Top;
+        }
+
+        private void TwitchTVButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.TwitchTVButton.Height;
+            this.SidePanel.Top = this.TwitchTVButton.Top;
+        }
+
+        private void OffButton_Click(object sender, EventArgs e)
+        {
+            Form1.ActiveForm.Close();
         }
     }
 }
