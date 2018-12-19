@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ServiceMenu = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.SettingButton = new System.Windows.Forms.Button();
-            this.OffButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.TwitchTVButton = new System.Windows.Forms.Button();
             this.GoogleStorageButton = new System.Windows.Forms.Button();
@@ -42,7 +39,22 @@
             this.GmailButton = new System.Windows.Forms.Button();
             this.GoogleDriveButton = new System.Windows.Forms.Button();
             this.youtubeAPIButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SettingButton = new System.Windows.Forms.Button();
+            this.OffButton = new System.Windows.Forms.Button();
+            this.LoginPanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LoginBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.LoginBoxID = new System.Windows.Forms.TextBox();
+            this.GoogleLoginButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.ServiceMenu.SuspendLayout();
+            this.LoginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ServiceMenu
@@ -71,41 +83,6 @@
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Size = new System.Drawing.Size(23, 101);
             this.SidePanel.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(205, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1158, 12);
-            this.panel1.TabIndex = 0;
-            // 
-            // SettingButton
-            // 
-            this.SettingButton.FlatAppearance.BorderSize = 0;
-            this.SettingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingButton.Image = global::GOOGLESOFT.Properties.Resources.setting;
-            this.SettingButton.Location = new System.Drawing.Point(1238, 15);
-            this.SettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SettingButton.Name = "SettingButton";
-            this.SettingButton.Size = new System.Drawing.Size(57, 62);
-            this.SettingButton.TabIndex = 2;
-            this.SettingButton.UseVisualStyleBackColor = true;
-            // 
-            // OffButton
-            // 
-            this.OffButton.BackColor = System.Drawing.Color.Gray;
-            this.OffButton.FlatAppearance.BorderSize = 0;
-            this.OffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OffButton.Image = global::GOOGLESOFT.Properties.Resources.onoff2;
-            this.OffButton.Location = new System.Drawing.Point(1302, 15);
-            this.OffButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.OffButton.Name = "OffButton";
-            this.OffButton.Size = new System.Drawing.Size(57, 62);
-            this.OffButton.TabIndex = 1;
-            this.OffButton.UseVisualStyleBackColor = false;
-            this.OffButton.Click += new System.EventHandler(this.OffButton_Click);
             // 
             // HomeButton
             // 
@@ -227,15 +204,164 @@
             this.youtubeAPIButton.UseVisualStyleBackColor = true;
             this.youtubeAPIButton.Click += new System.EventHandler(this.youtubeAPIButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(205, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1158, 12);
+            this.panel1.TabIndex = 0;
+            // 
+            // SettingButton
+            // 
+            this.SettingButton.BackColor = System.Drawing.Color.Transparent;
+            this.SettingButton.FlatAppearance.BorderSize = 0;
+            this.SettingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingButton.Image = global::GOOGLESOFT.Properties.Resources.setting;
+            this.SettingButton.Location = new System.Drawing.Point(1239, 16);
+            this.SettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SettingButton.Name = "SettingButton";
+            this.SettingButton.Size = new System.Drawing.Size(57, 62);
+            this.SettingButton.TabIndex = 2;
+            this.SettingButton.UseVisualStyleBackColor = false;
+            this.SettingButton.Click += new System.EventHandler(this.SettingButton_Click);
+            // 
+            // OffButton
+            // 
+            this.OffButton.BackColor = System.Drawing.Color.Transparent;
+            this.OffButton.FlatAppearance.BorderSize = 0;
+            this.OffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OffButton.Image = global::GOOGLESOFT.Properties.Resources.onoff2;
+            this.OffButton.Location = new System.Drawing.Point(1302, 15);
+            this.OffButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OffButton.Name = "OffButton";
+            this.OffButton.Size = new System.Drawing.Size(57, 62);
+            this.OffButton.TabIndex = 1;
+            this.OffButton.UseVisualStyleBackColor = false;
+            this.OffButton.Click += new System.EventHandler(this.OffButton_Click);
+            // 
+            // LoginPanel
+            // 
+            this.LoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoginPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginPanel.Controls.Add(this.panel3);
+            this.LoginPanel.Controls.Add(this.panel2);
+            this.LoginPanel.Controls.Add(this.GoogleLoginButton);
+            this.LoginPanel.Controls.Add(this.pictureBox2);
+            this.LoginPanel.Controls.Add(this.pictureBox1);
+            this.LoginPanel.Controls.Add(this.LoginBoxPassword);
+            this.LoginPanel.Controls.Add(this.textBox1);
+            this.LoginPanel.Controls.Add(this.LoginBoxID);
+            this.LoginPanel.Location = new System.Drawing.Point(273, 48);
+            this.LoginPanel.Name = "LoginPanel";
+            this.LoginPanel.Size = new System.Drawing.Size(441, 269);
+            this.LoginPanel.TabIndex = 3;
+            this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::GOOGLESOFT.Properties.Resources.lock5050;
+            this.pictureBox2.Location = new System.Drawing.Point(17, 133);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GOOGLESOFT.Properties.Resources.little_human;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 76);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LoginBoxPassword
+            // 
+            this.LoginBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoginBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginBoxPassword.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginBoxPassword.Location = new System.Drawing.Point(73, 139);
+            this.LoginBoxPassword.Name = "LoginBoxPassword";
+            this.LoginBoxPassword.Size = new System.Drawing.Size(314, 44);
+            this.LoginBoxPassword.TabIndex = 2;
+            this.LoginBoxPassword.Text = "Password";
+            this.LoginBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoginBoxPassword.TextChanged += new System.EventHandler(this.LoginPassword_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.textBox1.Location = new System.Drawing.Point(0, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(441, 44);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Google Login";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LoginBoxID
+            // 
+            this.LoginBoxID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoginBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginBoxID.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginBoxID.Location = new System.Drawing.Point(73, 82);
+            this.LoginBoxID.Name = "LoginBoxID";
+            this.LoginBoxID.Size = new System.Drawing.Size(314, 44);
+            this.LoginBoxID.TabIndex = 0;
+            this.LoginBoxID.Text = "ID";
+            this.LoginBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoginBoxID.TextChanged += new System.EventHandler(this.LoginBoxID_TextChanged);
+            // 
+            // GoogleLoginButton
+            // 
+            this.GoogleLoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatAppearance.BorderSize = 5;
+            this.GoogleLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.GoogleLoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GoogleLoginButton.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.GoogleLoginButton.ForeColor = System.Drawing.Color.White;
+            this.GoogleLoginButton.Location = new System.Drawing.Point(88, 199);
+            this.GoogleLoginButton.Margin = new System.Windows.Forms.Padding(0);
+            this.GoogleLoginButton.Name = "GoogleLoginButton";
+            this.GoogleLoginButton.Size = new System.Drawing.Size(267, 70);
+            this.GoogleLoginButton.TabIndex = 4;
+            this.GoogleLoginButton.Text = "LOGIN";
+            this.GoogleLoginButton.UseVisualStyleBackColor = false;
+            this.GoogleLoginButton.UseWaitCursor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(17, 124);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(364, 3);
+            this.panel2.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(17, 180);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(364, 3);
+            this.panel3.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImage = global::GOOGLESOFT.Properties.Resources.Makise_Kurisu_background1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1362, 844);
-            this.Controls.Add(this.SettingButton);
+            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.OffButton);
+            this.Controls.Add(this.SettingButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ServiceMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -243,6 +369,10 @@
             this.Name = "Form1";
             this.Text = "r";
             this.ServiceMenu.ResumeLayout(false);
+            this.LoginPanel.ResumeLayout(false);
+            this.LoginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,6 +392,15 @@
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Button OffButton;
         private System.Windows.Forms.Button SettingButton;
+        private System.Windows.Forms.Panel LoginPanel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox LoginBoxID;
+        private System.Windows.Forms.TextBox LoginBoxPassword;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button GoogleLoginButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

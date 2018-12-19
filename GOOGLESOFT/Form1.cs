@@ -69,5 +69,25 @@ namespace GOOGLESOFT
         {
             Form1.ActiveForm.Close();
         }
+
+        private void SettingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginBoxID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
