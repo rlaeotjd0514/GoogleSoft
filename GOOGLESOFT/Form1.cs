@@ -6,8 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+
+using Google.Apis.YouTube;
+using Google.Apis.YouTube.v3;
 
 
 
@@ -97,10 +101,12 @@ namespace GOOGLESOFT
 
         }
 
-        private void GoogleLoginButton_Click(object sender, EventArgs e)
+        private async void GoogleLoginButton_Click(object sender, EventArgs e)
         {
-            var GoogleToken = new GoogleLogin(this.LoginBoxID.ToString(), this.LoginBoxPassword.ToString());
-            GoogleToken.SetLoginCredencial().Start();
+            //var GoogleToken = new GoogleLogin(this.LoginBoxID.Text.ToString(), this.LoginBoxPassword.Text.ToString());
+            var GoogleToken = new GoogleLogin();
+            YouTubeService Ys = await GoogleToken.SetLoginCredencial();
+
             
         }
     }

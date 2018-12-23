@@ -356,7 +356,6 @@
             this.LoginBoxID.TabIndex = 0;
             this.LoginBoxID.Text = "ID";
             this.LoginBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginBoxID.TextChanged += new System.EventHandler(this.LoginBoxID_TextChanged);
             // 
             // Form1
             // 

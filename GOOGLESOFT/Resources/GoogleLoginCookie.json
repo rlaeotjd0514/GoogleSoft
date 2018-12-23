@@ -1,4 +1,8 @@
 {
-    "GoogleID" : "rlaajtjd0514@gmail.com",
-    "GooglePw" : "fhf10Rnfwoa"
+  "web": {
+    "client_id": "554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com",
+    "client_secret": "k6QB-O_X71vatJwtDBe_9uKv",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token"
+  }
 }

@@ -29,8 +29,8 @@ namespace GOOGLESOFT
         public GoogleLogin(string ID, string Pw)
         {
             LoginID = ID;
-            LoginID = Pw;
-            using (var GoogleCred = new StreamWriter("../Resources/Logs.txt"))
+            LoginPw = Pw;
+            using (var GoogleCred = new StreamWriter("../../Resources/Logs.txt"))
             {
                 GoogleCred.WriteLine("Log>>>ID:{0}:Pw:{1}", LoginID, LoginPw);
 
@@ -38,31 +38,42 @@ namespace GOOGLESOFT
         }
         public GoogleLogin()
         {
-            
             string Cred = File.ReadAllText("C:\\Users\\31337\\source\\repos\\GOOGLESOFT\\GOOGLESOFT\\Resources\\GoogleLoginCookie.json");
             JObject CredJ = JObject.Parse(Cred);
-            JToken ID = CredJ["ID"];
-            JToken Pw = CredJ["Pw"];
+            JToken ID = CredJ["web"]["client_id"];
+            JToken Pw = CredJ["web"]["client_secret"];
             LoginID = ID.ToString();
             LoginPw = Pw.ToString();
             //컴파일시 파일 경로 주의!
-            using (var GoogleCred = new StreamWriter("../Resources/Logs.txt")) {
-                GoogleCred.WriteLine("Log>>>ID:{0}:Pw:{1}", LoginID, LoginPw);
-                    
+            using (var GoogleCred = new StreamWriter("../../Resources/Logs.txt")) {
+                GoogleCred.WriteLine("Log>>>ID:{0}:Pw:{1}", LoginID, LoginPw); 
             }
         }
         
         public async Task<YouTubeService> SetLoginCredencial()
         {
+            UserCredential cred;
+            using (var stream = new FileStream("../../Resources/GoogleLoginCookie.json", FileMode.Open, FileAccess.Read))
+            {
+                cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    new[] { YouTubeService.Scope.Youtube },
+                    "user", CancellationToken.None);
+            }
+
+            /*
             var UserInfo = await GoogleWebAuthorizationBroker.AuthorizeAsync
                 (new ClientSecrets { ClientId = LoginID, ClientSecret = LoginPw },
                     new[] { YouTubeService.Scope.Youtube },
                     "MakiseKurisu",
                     CancellationToken.None);
+            */
             var GoogleYoutube = new YouTubeService(new BaseClientService.Initializer()
             {
-                HttpClientInitializer = UserInfo,
-                ApplicationName = "Not now",
+                HttpClientInitializer = cred,
+                ApplicationName = "YOUTUBE GUI",
+                //ApiKey = "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q",
+                
             });
             if(GoogleYoutube == null)
             {
