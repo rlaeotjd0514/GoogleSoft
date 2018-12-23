@@ -43,14 +43,14 @@
             this.SettingButton = new System.Windows.Forms.Button();
             this.OffButton = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GoogleLoginButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginBoxPassword = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoginBoxID = new System.Windows.Forms.TextBox();
-            this.GoogleLoginButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.ServiceMenu.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -72,7 +72,7 @@
             this.ServiceMenu.Location = new System.Drawing.Point(0, 0);
             this.ServiceMenu.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceMenu.Name = "ServiceMenu";
-            this.ServiceMenu.Size = new System.Drawing.Size(205, 840);
+            this.ServiceMenu.Size = new System.Drawing.Size(179, 672);
             this.ServiceMenu.TabIndex = 0;
             // 
             // SidePanel
@@ -81,7 +81,7 @@
             this.SidePanel.Location = new System.Drawing.Point(0, 0);
             this.SidePanel.Margin = new System.Windows.Forms.Padding(0);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(23, 101);
+            this.SidePanel.Size = new System.Drawing.Size(20, 81);
             this.SidePanel.TabIndex = 1;
             // 
             // HomeButton
@@ -93,7 +93,7 @@
             this.HomeButton.Location = new System.Drawing.Point(0, 0);
             this.HomeButton.Margin = new System.Windows.Forms.Padding(0);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(205, 101);
+            this.HomeButton.Size = new System.Drawing.Size(179, 81);
             this.HomeButton.TabIndex = 1;
             this.HomeButton.Text = "HOME";
             this.HomeButton.UseVisualStyleBackColor = true;
@@ -105,10 +105,10 @@
             this.TwitchTVButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TwitchTVButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TwitchTVButton.Image = ((System.Drawing.Image)(resources.GetObject("TwitchTVButton.Image")));
-            this.TwitchTVButton.Location = new System.Drawing.Point(0, 709);
+            this.TwitchTVButton.Location = new System.Drawing.Point(0, 567);
             this.TwitchTVButton.Margin = new System.Windows.Forms.Padding(0);
             this.TwitchTVButton.Name = "TwitchTVButton";
-            this.TwitchTVButton.Size = new System.Drawing.Size(205, 131);
+            this.TwitchTVButton.Size = new System.Drawing.Size(179, 105);
             this.TwitchTVButton.TabIndex = 0;
             this.TwitchTVButton.Text = "Twitch TV";
             this.TwitchTVButton.UseVisualStyleBackColor = true;
@@ -120,10 +120,10 @@
             this.GoogleStorageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoogleStorageButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GoogleStorageButton.Image = ((System.Drawing.Image)(resources.GetObject("GoogleStorageButton.Image")));
-            this.GoogleStorageButton.Location = new System.Drawing.Point(0, 608);
+            this.GoogleStorageButton.Location = new System.Drawing.Point(0, 486);
             this.GoogleStorageButton.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleStorageButton.Name = "GoogleStorageButton";
-            this.GoogleStorageButton.Size = new System.Drawing.Size(205, 101);
+            this.GoogleStorageButton.Size = new System.Drawing.Size(179, 81);
             this.GoogleStorageButton.TabIndex = 0;
             this.GoogleStorageButton.Text = "Google Storage";
             this.GoogleStorageButton.UseVisualStyleBackColor = true;
@@ -135,10 +135,10 @@
             this.GoogleSheetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoogleSheetButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GoogleSheetButton.Image = ((System.Drawing.Image)(resources.GetObject("GoogleSheetButton.Image")));
-            this.GoogleSheetButton.Location = new System.Drawing.Point(0, 506);
+            this.GoogleSheetButton.Location = new System.Drawing.Point(0, 405);
             this.GoogleSheetButton.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleSheetButton.Name = "GoogleSheetButton";
-            this.GoogleSheetButton.Size = new System.Drawing.Size(205, 101);
+            this.GoogleSheetButton.Size = new System.Drawing.Size(179, 81);
             this.GoogleSheetButton.TabIndex = 0;
             this.GoogleSheetButton.Text = "Google Sheet";
             this.GoogleSheetButton.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@
             this.GoogleComputeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoogleComputeButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GoogleComputeButton.Image = ((System.Drawing.Image)(resources.GetObject("GoogleComputeButton.Image")));
-            this.GoogleComputeButton.Location = new System.Drawing.Point(0, 405);
+            this.GoogleComputeButton.Location = new System.Drawing.Point(0, 324);
             this.GoogleComputeButton.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleComputeButton.Name = "GoogleComputeButton";
-            this.GoogleComputeButton.Size = new System.Drawing.Size(205, 101);
+            this.GoogleComputeButton.Size = new System.Drawing.Size(179, 81);
             this.GoogleComputeButton.TabIndex = 0;
             this.GoogleComputeButton.Text = "Google Compute";
             this.GoogleComputeButton.UseVisualStyleBackColor = true;
@@ -165,10 +165,10 @@
             this.GmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GmailButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GmailButton.Image = ((System.Drawing.Image)(resources.GetObject("GmailButton.Image")));
-            this.GmailButton.Location = new System.Drawing.Point(0, 304);
+            this.GmailButton.Location = new System.Drawing.Point(0, 243);
             this.GmailButton.Margin = new System.Windows.Forms.Padding(0);
             this.GmailButton.Name = "GmailButton";
-            this.GmailButton.Size = new System.Drawing.Size(205, 101);
+            this.GmailButton.Size = new System.Drawing.Size(179, 81);
             this.GmailButton.TabIndex = 0;
             this.GmailButton.Text = "Gmail";
             this.GmailButton.UseVisualStyleBackColor = true;
@@ -180,10 +180,10 @@
             this.GoogleDriveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoogleDriveButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GoogleDriveButton.Image = ((System.Drawing.Image)(resources.GetObject("GoogleDriveButton.Image")));
-            this.GoogleDriveButton.Location = new System.Drawing.Point(0, 202);
+            this.GoogleDriveButton.Location = new System.Drawing.Point(0, 162);
             this.GoogleDriveButton.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleDriveButton.Name = "GoogleDriveButton";
-            this.GoogleDriveButton.Size = new System.Drawing.Size(205, 101);
+            this.GoogleDriveButton.Size = new System.Drawing.Size(179, 81);
             this.GoogleDriveButton.TabIndex = 0;
             this.GoogleDriveButton.Text = "Google Drive";
             this.GoogleDriveButton.UseVisualStyleBackColor = true;
@@ -195,10 +195,10 @@
             this.youtubeAPIButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.youtubeAPIButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.youtubeAPIButton.Image = ((System.Drawing.Image)(resources.GetObject("youtubeAPIButton.Image")));
-            this.youtubeAPIButton.Location = new System.Drawing.Point(0, 101);
+            this.youtubeAPIButton.Location = new System.Drawing.Point(0, 81);
             this.youtubeAPIButton.Margin = new System.Windows.Forms.Padding(0);
             this.youtubeAPIButton.Name = "youtubeAPIButton";
-            this.youtubeAPIButton.Size = new System.Drawing.Size(205, 101);
+            this.youtubeAPIButton.Size = new System.Drawing.Size(179, 81);
             this.youtubeAPIButton.TabIndex = 0;
             this.youtubeAPIButton.Text = "Youtube API";
             this.youtubeAPIButton.UseVisualStyleBackColor = true;
@@ -207,10 +207,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(205, 0);
+            this.panel1.Location = new System.Drawing.Point(179, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1158, 12);
+            this.panel1.Size = new System.Drawing.Size(1013, 10);
             this.panel1.TabIndex = 0;
             // 
             // SettingButton
@@ -219,10 +219,9 @@
             this.SettingButton.FlatAppearance.BorderSize = 0;
             this.SettingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingButton.Image = global::GOOGLESOFT.Properties.Resources.setting;
-            this.SettingButton.Location = new System.Drawing.Point(1239, 16);
-            this.SettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SettingButton.Location = new System.Drawing.Point(1084, 13);
             this.SettingButton.Name = "SettingButton";
-            this.SettingButton.Size = new System.Drawing.Size(57, 62);
+            this.SettingButton.Size = new System.Drawing.Size(50, 50);
             this.SettingButton.TabIndex = 2;
             this.SettingButton.UseVisualStyleBackColor = false;
             this.SettingButton.Click += new System.EventHandler(this.SettingButton_Click);
@@ -233,10 +232,9 @@
             this.OffButton.FlatAppearance.BorderSize = 0;
             this.OffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OffButton.Image = global::GOOGLESOFT.Properties.Resources.onoff2;
-            this.OffButton.Location = new System.Drawing.Point(1302, 15);
-            this.OffButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OffButton.Location = new System.Drawing.Point(1139, 12);
             this.OffButton.Name = "OffButton";
-            this.OffButton.Size = new System.Drawing.Size(57, 62);
+            this.OffButton.Size = new System.Drawing.Size(50, 50);
             this.OffButton.TabIndex = 1;
             this.OffButton.UseVisualStyleBackColor = false;
             this.OffButton.Click += new System.EventHandler(this.OffButton_Click);
@@ -253,68 +251,30 @@
             this.LoginPanel.Controls.Add(this.LoginBoxPassword);
             this.LoginPanel.Controls.Add(this.textBox1);
             this.LoginPanel.Controls.Add(this.LoginBoxID);
-            this.LoginPanel.Location = new System.Drawing.Point(273, 48);
+            this.LoginPanel.Location = new System.Drawing.Point(217, 27);
+            this.LoginPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(441, 269);
+            this.LoginPanel.Size = new System.Drawing.Size(386, 216);
             this.LoginPanel.TabIndex = 3;
             this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
             // 
-            // pictureBox2
+            // panel3
             // 
-            this.pictureBox2.BackgroundImage = global::GOOGLESOFT.Properties.Resources.lock5050;
-            this.pictureBox2.Location = new System.Drawing.Point(17, 133);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(15, 144);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(318, 2);
+            this.panel3.TabIndex = 6;
             // 
-            // pictureBox1
+            // panel2
             // 
-            this.pictureBox1.BackgroundImage = global::GOOGLESOFT.Properties.Resources.little_human;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 76);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // LoginBoxPassword
-            // 
-            this.LoginBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.LoginBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginBoxPassword.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LoginBoxPassword.Location = new System.Drawing.Point(73, 139);
-            this.LoginBoxPassword.Name = "LoginBoxPassword";
-            this.LoginBoxPassword.Size = new System.Drawing.Size(314, 44);
-            this.LoginBoxPassword.TabIndex = 2;
-            this.LoginBoxPassword.Text = "Password";
-            this.LoginBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginBoxPassword.TextChanged += new System.EventHandler(this.LoginPassword_TextChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.textBox1.Location = new System.Drawing.Point(0, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(441, 44);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Google Login";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // LoginBoxID
-            // 
-            this.LoginBoxID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.LoginBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginBoxID.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LoginBoxID.Location = new System.Drawing.Point(73, 82);
-            this.LoginBoxID.Name = "LoginBoxID";
-            this.LoginBoxID.Size = new System.Drawing.Size(314, 44);
-            this.LoginBoxID.TabIndex = 0;
-            this.LoginBoxID.Text = "ID";
-            this.LoginBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginBoxID.TextChanged += new System.EventHandler(this.LoginBoxID_TextChanged);
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(15, 99);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(318, 2);
+            this.panel2.TabIndex = 5;
             // 
             // GoogleLoginButton
             // 
@@ -326,46 +286,92 @@
             this.GoogleLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoogleLoginButton.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.GoogleLoginButton.ForeColor = System.Drawing.Color.White;
-            this.GoogleLoginButton.Location = new System.Drawing.Point(88, 199);
+            this.GoogleLoginButton.Location = new System.Drawing.Point(77, 159);
             this.GoogleLoginButton.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleLoginButton.Name = "GoogleLoginButton";
-            this.GoogleLoginButton.Size = new System.Drawing.Size(267, 70);
+            this.GoogleLoginButton.Size = new System.Drawing.Size(234, 56);
             this.GoogleLoginButton.TabIndex = 4;
             this.GoogleLoginButton.Text = "LOGIN";
             this.GoogleLoginButton.UseVisualStyleBackColor = false;
             this.GoogleLoginButton.UseWaitCursor = true;
+            this.GoogleLoginButton.Click += new System.EventHandler(this.GoogleLoginButton_Click);
             // 
-            // panel2
+            // pictureBox2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(17, 124);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 3);
-            this.panel2.TabIndex = 5;
+            this.pictureBox2.BackgroundImage = global::GOOGLESOFT.Properties.Resources.lock5050;
+            this.pictureBox2.Location = new System.Drawing.Point(15, 106);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(44, 40);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
-            // panel3
+            // pictureBox1
             // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(17, 180);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(364, 3);
-            this.panel3.TabIndex = 6;
+            this.pictureBox1.BackgroundImage = global::GOOGLESOFT.Properties.Resources.little_human;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 61);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(44, 40);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LoginBoxPassword
+            // 
+            this.LoginBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoginBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginBoxPassword.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginBoxPassword.Location = new System.Drawing.Point(64, 111);
+            this.LoginBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginBoxPassword.Name = "LoginBoxPassword";
+            this.LoginBoxPassword.Size = new System.Drawing.Size(275, 36);
+            this.LoginBoxPassword.TabIndex = 2;
+            this.LoginBoxPassword.Text = "Password";
+            this.LoginBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoginBoxPassword.TextChanged += new System.EventHandler(this.LoginPassword_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.textBox1.Location = new System.Drawing.Point(0, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(386, 36);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Google Login";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LoginBoxID
+            // 
+            this.LoginBoxID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoginBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginBoxID.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginBoxID.Location = new System.Drawing.Point(64, 66);
+            this.LoginBoxID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginBoxID.Name = "LoginBoxID";
+            this.LoginBoxID.Size = new System.Drawing.Size(275, 36);
+            this.LoginBoxID.TabIndex = 0;
+            this.LoginBoxID.Text = "ID";
+            this.LoginBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoginBoxID.TextChanged += new System.EventHandler(this.LoginBoxID_TextChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImage = global::GOOGLESOFT.Properties.Resources.Makise_Kurisu_background1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1362, 844);
+            this.ClientSize = new System.Drawing.Size(1192, 675);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.OffButton);
             this.Controls.Add(this.SettingButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ServiceMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "r";
             this.ServiceMenu.ResumeLayout(false);

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
+
 
 namespace GOOGLESOFT
 {
@@ -72,11 +75,15 @@ namespace GOOGLESOFT
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void LoginBoxID_TextChanged(object sender, EventArgs e)
         {
+            using (var Stream = new FileStream("GoogleLoginCookie.json", FileMode.Open, FileAccess.Write))
+            {
+                
+            }
 
         }
 
@@ -88,6 +95,13 @@ namespace GOOGLESOFT
         private void LoginPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void GoogleLoginButton_Click(object sender, EventArgs e)
+        {
+            var GoogleToken = new GoogleLogin(this.LoginBoxID.ToString(), this.LoginBoxPassword.ToString());
+            GoogleToken.SetLoginCredencial().Start();
+            
         }
     }
 }
