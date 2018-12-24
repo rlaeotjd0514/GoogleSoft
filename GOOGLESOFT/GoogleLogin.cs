@@ -50,7 +50,7 @@ namespace GOOGLESOFT
             }
         }
         
-        public async Task<YouTubeService> SetLoginCredencial()
+        public async Task<BaseClientService.Initializer> SetLoginCredencial()
         {
             UserCredential cred;
             using (var stream = new FileStream("../../Resources/GoogleLoginCookie.json", FileMode.Open, FileAccess.Read))
@@ -58,7 +58,7 @@ namespace GOOGLESOFT
                 cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     new[] { YouTubeService.Scope.Youtube },
-                    "user", CancellationToken.None);
+                    "rlaajtjd0514@gmail.com", CancellationToken.None);
             }
 
             /*
@@ -68,13 +68,12 @@ namespace GOOGLESOFT
                     "MakiseKurisu",
                     CancellationToken.None);
             */
-            var GoogleYoutube = new YouTubeService(new BaseClientService.Initializer()
+            var GoogleYoutube = new BaseClientService.Initializer()
             {
                 HttpClientInitializer = cred,
                 ApplicationName = "YOUTUBE GUI",
-                //ApiKey = "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q",
-                
-            });
+                ApiKey = "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q",
+            };
             if(GoogleYoutube == null)
             {
                 throw new Exception("youtube API Login Failed!!\n");

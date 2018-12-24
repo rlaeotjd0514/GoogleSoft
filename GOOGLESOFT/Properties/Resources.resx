@@ -121,6 +121,12 @@
   <data name="Makise_Kurisu_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Makise_Kurisu_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lock5050" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock5050.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Makise_Kurisu_background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Makise_Kurisu_background1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,10 +136,7 @@
   <data name="onoff2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\onoff2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Makise_Kurisu_background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Makise_Kurisu_background1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lock5050" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lock5050.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="downarrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\downarrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -105,9 +105,25 @@ namespace GOOGLESOFT
         {
             //var GoogleToken = new GoogleLogin(this.LoginBoxID.Text.ToString(), this.LoginBoxPassword.Text.ToString());
             var GoogleToken = new GoogleLogin();
-            YouTubeService Ys = await GoogleToken.SetLoginCredencial();
+            var GoogleCred = await GoogleToken.SetLoginCredencial();
+            var req = new YouTubeService(GoogleCred);
+            string API = req.ApiKey.ToString();
+
+            this.ApiLabel.Text = API;
 
             
+        }
+
+        private void InnerViewButton_Click(object sender, EventArgs e)
+        {
+            if(this.GoogleInnerViewPanel.Visible == false)
+            {
+                this.GoogleInnerViewPanel.Visible = true;
+            }
+            else
+            {
+                this.GoogleInnerViewPanel.Visible = false;
+            }
         }
     }
 }

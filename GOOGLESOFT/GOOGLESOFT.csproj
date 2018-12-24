@@ -211,6 +211,7 @@
     <None Include="Resources\lock5050.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\downarrow.png" />
     <Content Include="Resources\Logs.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
