@@ -12,6 +12,7 @@ using System.IO;
 
 using Google.Apis.YouTube;
 using Google.Apis.YouTube.v3;
+using Google.Apis.Services;
 
 
 
@@ -40,6 +41,8 @@ namespace GOOGLESOFT
         {
             this.SidePanel.Height = this.youtubeAPIButton.Height;
             this.SidePanel.Top = this.youtubeAPIButton.Top;
+
+
         }
 
         private void GoogleDriveButton_Click(object sender, EventArgs e)
@@ -79,14 +82,14 @@ namespace GOOGLESOFT
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void LoginBoxID_TextChanged(object sender, EventArgs e)
         {
             using (var Stream = new FileStream("GoogleLoginCookie.json", FileMode.Open, FileAccess.Write))
             {
-                
+
             }
 
         }
@@ -106,24 +109,35 @@ namespace GOOGLESOFT
             //var GoogleToken = new GoogleLogin(this.LoginBoxID.Text.ToString(), this.LoginBoxPassword.Text.ToString());
             var GoogleToken = new GoogleLogin();
             var GoogleCred = await GoogleToken.SetLoginCredencial();
-            var req = new YouTubeService(GoogleCred);
+            var req = new YouTubeService(GoogleCred);   //GoogleCred는 BaseClientService.Initializer타입
+
             string API = req.ApiKey.ToString();
-
             this.ApiLabel.Text = API;
-
-            
         }
 
         private void InnerViewButton_Click(object sender, EventArgs e)
         {
-            if(this.GoogleInnerViewPanel.Visible == false)
+            if (this.GoogleInnerViewPanel.Visible == false)
             {
+                //this.GoogleInnerViewPanel.Location = this.LoginPanel.Location;
+                Point InnerViewPostion = this.LoginPanel.Location;
+                InnerViewPostion.Y += this.LoginPanel.Height;
+                this.GoogleInnerViewPanel.Location = InnerViewPostion;
                 this.GoogleInnerViewPanel.Visible = true;
             }
             else
             {
                 this.GoogleInnerViewPanel.Visible = false;
             }
+        }
+
+        private void UserLoginButton_Click(object sender, EventArgs e)
+        {
+            string ID = this.LoginBoxID.Text;
+            string Ps = this.LoginBoxPassword.Text;
+
+            var LoginForm = new GoogleLoginForm(AuthResponse.GetAutenticationURI("554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com", ""));
+            LoginForm.ShowDialog();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace GOOGLESOFT
         }
         public GoogleLogin()
         {
-            string Cred = File.ReadAllText("C:\\Users\\31337\\source\\repos\\GOOGLESOFT\\GOOGLESOFT\\Resources\\GoogleLoginCookie.json");
+            string Cred = File.ReadAllText("../../Resources/GoogleLoginCookie.json");
             JObject CredJ = JObject.Parse(Cred);
             JToken ID = CredJ["web"]["client_id"];
             JToken Pw = CredJ["web"]["client_secret"];

@@ -43,18 +43,19 @@
             this.SettingButton = new System.Windows.Forms.Button();
             this.OffButton = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.UserLoginButton = new System.Windows.Forms.Button();
             this.InnerViewButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.GoogleLoginButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginBoxPassword = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoginBoxID = new System.Windows.Forms.TextBox();
+            this.GoogleLoginButton = new System.Windows.Forms.Button();
             this.GoogleInnerViewPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.ApiLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.ServiceMenu.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -246,23 +247,40 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.AllowDrop = true;
             this.LoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.LoginPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginPanel.Controls.Add(this.UserLoginButton);
             this.LoginPanel.Controls.Add(this.InnerViewButton);
             this.LoginPanel.Controls.Add(this.panel3);
             this.LoginPanel.Controls.Add(this.panel2);
-            this.LoginPanel.Controls.Add(this.GoogleLoginButton);
             this.LoginPanel.Controls.Add(this.pictureBox2);
             this.LoginPanel.Controls.Add(this.pictureBox1);
             this.LoginPanel.Controls.Add(this.LoginBoxPassword);
             this.LoginPanel.Controls.Add(this.textBox1);
             this.LoginPanel.Controls.Add(this.LoginBoxID);
-            this.LoginPanel.Location = new System.Drawing.Point(217, 27);
+            this.LoginPanel.Location = new System.Drawing.Point(194, 189);
             this.LoginPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(386, 216);
             this.LoginPanel.TabIndex = 3;
-            this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
+            this.LoginPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginPanel_MouseDown);
+            this.LoginPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LoginPanel_MouseMove);
+            this.LoginPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LoginPanel_MouseUp);
+            // 
+            // UserLoginButton
+            // 
+            this.UserLoginButton.BackColor = System.Drawing.Color.Red;
+            this.UserLoginButton.FlatAppearance.BorderSize = 0;
+            this.UserLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserLoginButton.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.UserLoginButton.Location = new System.Drawing.Point(195, 166);
+            this.UserLoginButton.Name = "UserLoginButton";
+            this.UserLoginButton.Size = new System.Drawing.Size(173, 39);
+            this.UserLoginButton.TabIndex = 8;
+            this.UserLoginButton.Text = "USER LOGIN";
+            this.UserLoginButton.UseVisualStyleBackColor = false;
+            this.UserLoginButton.Click += new System.EventHandler(this.UserLoginButton_Click);
             // 
             // InnerViewButton
             // 
@@ -294,26 +312,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(318, 2);
             this.panel2.TabIndex = 5;
-            // 
-            // GoogleLoginButton
-            // 
-            this.GoogleLoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.GoogleLoginButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.GoogleLoginButton.FlatAppearance.BorderSize = 5;
-            this.GoogleLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.GoogleLoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.GoogleLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GoogleLoginButton.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.GoogleLoginButton.ForeColor = System.Drawing.Color.White;
-            this.GoogleLoginButton.Location = new System.Drawing.Point(141, 155);
-            this.GoogleLoginButton.Margin = new System.Windows.Forms.Padding(0);
-            this.GoogleLoginButton.Name = "GoogleLoginButton";
-            this.GoogleLoginButton.Size = new System.Drawing.Size(234, 56);
-            this.GoogleLoginButton.TabIndex = 4;
-            this.GoogleLoginButton.Text = "LOGIN";
-            this.GoogleLoginButton.UseVisualStyleBackColor = false;
-            this.GoogleLoginButton.UseWaitCursor = true;
-            this.GoogleLoginButton.Click += new System.EventHandler(this.GoogleLoginButton_Click);
             // 
             // pictureBox2
             // 
@@ -347,7 +345,8 @@
             this.LoginBoxPassword.TabIndex = 2;
             this.LoginBoxPassword.Text = "Password";
             this.LoginBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginBoxPassword.TextChanged += new System.EventHandler(this.LoginPassword_TextChanged);
+            this.LoginBoxPassword.Leave += new System.EventHandler(this.LoginBoxPassword_Leave);
+            this.LoginBoxPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginBoxPassword_MouseDown);
             // 
             // textBox1
             // 
@@ -358,6 +357,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 11);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(386, 36);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Google Login";
@@ -375,6 +375,28 @@
             this.LoginBoxID.TabIndex = 0;
             this.LoginBoxID.Text = "ID";
             this.LoginBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LoginBoxID.Leave += new System.EventHandler(this.LoginBoxID_Leave);
+            this.LoginBoxID.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginBoxID_MouseDown);
+            // 
+            // GoogleLoginButton
+            // 
+            this.GoogleLoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatAppearance.BorderSize = 5;
+            this.GoogleLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.GoogleLoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GoogleLoginButton.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.GoogleLoginButton.ForeColor = System.Drawing.Color.White;
+            this.GoogleLoginButton.Location = new System.Drawing.Point(847, 13);
+            this.GoogleLoginButton.Margin = new System.Windows.Forms.Padding(0);
+            this.GoogleLoginButton.Name = "GoogleLoginButton";
+            this.GoogleLoginButton.Size = new System.Drawing.Size(234, 56);
+            this.GoogleLoginButton.TabIndex = 4;
+            this.GoogleLoginButton.Text = "API LOGIN";
+            this.GoogleLoginButton.UseVisualStyleBackColor = false;
+            this.GoogleLoginButton.UseWaitCursor = true;
+            this.GoogleLoginButton.Click += new System.EventHandler(this.GoogleLoginButton_Click);
             // 
             // GoogleInnerViewPanel
             // 
@@ -382,12 +404,21 @@
             this.GoogleInnerViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GoogleInnerViewPanel.Controls.Add(this.ApiLabel);
             this.GoogleInnerViewPanel.Controls.Add(this.label1);
-            this.GoogleInnerViewPanel.Location = new System.Drawing.Point(217, 243);
+            this.GoogleInnerViewPanel.Location = new System.Drawing.Point(194, 405);
             this.GoogleInnerViewPanel.Margin = new System.Windows.Forms.Padding(0);
             this.GoogleInnerViewPanel.Name = "GoogleInnerViewPanel";
             this.GoogleInnerViewPanel.Size = new System.Drawing.Size(386, 260);
             this.GoogleInnerViewPanel.TabIndex = 4;
             this.GoogleInnerViewPanel.Visible = false;
+            // 
+            // ApiLabel
+            // 
+            this.ApiLabel.AutoSize = true;
+            this.ApiLabel.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ApiLabel.Location = new System.Drawing.Point(105, 39);
+            this.ApiLabel.Name = "ApiLabel";
+            this.ApiLabel.Size = new System.Drawing.Size(0, 13);
+            this.ApiLabel.TabIndex = 2;
             // 
             // label1
             // 
@@ -398,15 +429,6 @@
             this.label1.Size = new System.Drawing.Size(84, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "API KEY";
-            // 
-            // ApiLabel
-            // 
-            this.ApiLabel.AutoSize = true;
-            this.ApiLabel.Font = new System.Drawing.Font("돋움", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ApiLabel.Location = new System.Drawing.Point(105, 36);
-            this.ApiLabel.Name = "ApiLabel";
-            this.ApiLabel.Size = new System.Drawing.Size(0, 19);
-            this.ApiLabel.TabIndex = 2;
             // 
             // Form1
             // 
@@ -419,12 +441,16 @@
             this.Controls.Add(this.GoogleInnerViewPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.OffButton);
+            this.Controls.Add(this.GoogleLoginButton);
             this.Controls.Add(this.SettingButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ServiceMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "r";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.ServiceMenu.ResumeLayout(false);
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
@@ -464,6 +490,7 @@
         private System.Windows.Forms.Panel GoogleInnerViewPanel;
         private System.Windows.Forms.Label ApiLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button UserLoginButton;
     }
 }
 
