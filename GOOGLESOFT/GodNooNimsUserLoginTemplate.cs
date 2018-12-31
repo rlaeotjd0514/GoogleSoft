@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GOOGLESOFT
 {
@@ -39,9 +41,12 @@ namespace GOOGLESOFT
         /// 
         /// 
         /// 
-        public static AuthResponse get(string response)
+        public static AuthResponse get(string response) 
         {
-            AuthResponse result = JsonConvert.DeserializeObject(response) as AuthResponse;
+            var key = JObject.Parse(response);
+            //AuthResponse result = JsonConvert.DeserializeObject(response) as AuthResponse;
+            AuthResponse result = key.ToObject<AuthResponse>();
+            //MessageBox.Show($"{result.access_token}");
             result.created = DateTime.Now;   // DateTime.Now.Add(new TimeSpan(-2, 0, 0)); //For testing force refresh.
             return result;
         }
@@ -76,6 +81,7 @@ namespace GOOGLESOFT
             var request = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
 
             string postData = string.Format("code={0}&client_id={1}&client_secret={2}&redirect_uri={3}&grant_type=authorization_code", authCode, clientid, secret, redirectURI);
+            MessageBox.Show($"{postData}");
             var data = Encoding.ASCII.GetBytes(postData);
 
             request.Method = "POST";
@@ -86,18 +92,12 @@ namespace GOOGLESOFT
             {
                 stream.Write(data, 0, data.Length);
             }
-
             var response = (HttpWebResponse)request.GetResponse();
-
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
             var x = AuthResponse.get(responseString);
-
             x.clientId = clientid;
             x.secret = secret;
-
             return x;
-
         }
 
 
