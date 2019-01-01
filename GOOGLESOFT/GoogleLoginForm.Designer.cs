@@ -47,8 +47,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 563);
             this.Controls.Add(this.LoginBrowser);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GoogleLoginForm";
             this.Text = "GoogleLoginForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GoogleLoginForm_FormClosing);
             this.Load += new System.EventHandler(this.GoogleLoginForm_Load);
             this.ResumeLayout(false);
 

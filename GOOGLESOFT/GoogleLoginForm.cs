@@ -18,12 +18,20 @@ namespace GOOGLESOFT
 {
     public partial class GoogleLoginForm : Form
     {
+        public delegate void authdelegate(AuthResponse AuthCode);
+        public event authdelegate AuthEvent;
+
+        private AuthResponse AuthToken;
+
         public GoogleLoginForm(Uri LoginUri)
         {
             InitializeComponent();
             this.LoginBrowser.Navigate(LoginUri); // 이 폼에서 나오는 코드는 access_code
             //if ( this.LoginBrowser.DocumentText == ""
         }
+
+
+        
 
         private void GoogleLoginForm_Load(object sender, EventArgs e)
         {
@@ -32,19 +40,20 @@ namespace GOOGLESOFT
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            
+            //string Body = ((WebBrowser)sender).DocumentText;
+            //MessageBox.Show($"{Body}");
             string Mytitle = ((WebBrowser)sender).DocumentTitle.ToLower();
             string ind = Mytitle.IndexOf("success code=").ToString();
-            MessageBox.Show($"{ind}");
+            //MessageBox.Show($"{ind}");
             if (Mytitle.IndexOf("success code=") > -1)
             {
                 //LoginBrowser.Visible = false;
 
                 // searching the body for our code
                 string AuthCode = LoginBrowser.DocumentTitle.Replace("Success code=", "");
-                  // 여기부터 수정하십쇼 [2018 12 29 23:57]
+                // 여기부터 수정하십쇼 [2018 12 29 23:57]
                 string webText = ((WebBrowser)sender).DocumentText;
-                MessageBox.Show($"{webText}");
+                //MessageBox.Show($"{webText}");
                 //int start = webText.IndexOf("id=\"code\"");
                 int start = webText.IndexOf("code=") + 5;
                 int end = webText.IndexOf(@"&");
@@ -57,18 +66,22 @@ namespace GOOGLESOFT
                 {
                     authCode = "null";
                 }*/
-                MessageBox.Show($"authCode : {authCode}");
+                //MessageBox.Show($"authCode : {authCode}");
                 //Exchange the code for Access token and refreshtoken.
                 var access = AuthResponse.Exchange(authCode, 
                     "554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com",
                     "k6QB-O_X71vatJwtDBe_9uKv",
                     "urn:ietf:wg:oauth:2.0:oob");
                 MessageBox.Show($"AccessToken = {access.Access_token}");
+                this.AuthToken = access;
+                this.Close();
             }
-            else
-            {
-                MessageBox.Show("in else");
-            }
+        }
+
+        private void GoogleLoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AuthEvent(AuthToken);
+            MessageBox.Show("Token Sended!");
         }
     }
 }

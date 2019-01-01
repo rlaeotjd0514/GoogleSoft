@@ -81,7 +81,7 @@ namespace GOOGLESOFT
             var request = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
 
             string postData = string.Format("code={0}&client_id={1}&client_secret={2}&redirect_uri={3}&grant_type=authorization_code", authCode, clientid, secret, redirectURI);
-            MessageBox.Show($"{postData}");
+            //MessageBox.Show($"{postData}");
             var data = Encoding.ASCII.GetBytes(postData);
 
             request.Method = "POST";
@@ -99,9 +99,6 @@ namespace GOOGLESOFT
             x.secret = secret;
             return x;
         }
-
-
-
         public static Uri GetAutenticationURI(string clientId, string redirectUri)
         {
             string scopes = "https://www.googleapis.com/auth/plus.login email";

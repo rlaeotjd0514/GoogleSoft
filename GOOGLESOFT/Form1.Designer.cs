@@ -381,6 +381,7 @@
             // GoogleLoginButton
             // 
             this.GoogleLoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GoogleLoginButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.GoogleLoginButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.GoogleLoginButton.FlatAppearance.BorderSize = 5;
             this.GoogleLoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
@@ -395,7 +396,6 @@
             this.GoogleLoginButton.TabIndex = 4;
             this.GoogleLoginButton.Text = "API LOGIN";
             this.GoogleLoginButton.UseVisualStyleBackColor = false;
-            this.GoogleLoginButton.UseWaitCursor = true;
             this.GoogleLoginButton.Click += new System.EventHandler(this.GoogleLoginButton_Click);
             // 
             // GoogleInnerViewPanel

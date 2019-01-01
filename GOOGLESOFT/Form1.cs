@@ -24,6 +24,25 @@ namespace GOOGLESOFT
         {
             InitializeComponent();
         }
+        private AuthResponse AuthUserAccessToken;
+        public AuthResponse AAT
+        {
+            get
+            {
+                return this.AuthUserAccessToken;
+            }
+            set
+            {
+                this.AuthUserAccessToken = value;
+            }
+        }
+
+
+        private void youtubeAPIButton_Click(object sender, EventArgs e)
+        {
+            this.SidePanel.Height = this.youtubeAPIButton.Height;
+            this.SidePanel.Top = this.youtubeAPIButton.Top;
+        }
 
         private void GoogleStorageButton_Click(object sender, EventArgs e)
         {
@@ -35,14 +54,6 @@ namespace GOOGLESOFT
         {
             this.SidePanel.Height = this.HomeButton.Height;
             this.SidePanel.Top = this.HomeButton.Top;
-        }
-
-        private void youtubeAPIButton_Click(object sender, EventArgs e)
-        {
-            this.SidePanel.Height = this.youtubeAPIButton.Height;
-            this.SidePanel.Top = this.youtubeAPIButton.Top;
-
-
         }
 
         private void GoogleDriveButton_Click(object sender, EventArgs e)
@@ -137,7 +148,14 @@ namespace GOOGLESOFT
             string Ps = this.LoginBoxPassword.Text;
 
             var LoginForm = new GoogleLoginForm(AuthResponse.GetAutenticationURI("554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com", ""));
-            LoginForm.ShowDialog();
+            LoginForm.AuthEvent += new GoogleLoginForm.authdelegate(RecvAuthCode);
+            LoginForm.Show();
+        }
+
+        private void RecvAuthCode(AuthResponse RecvCode)
+        {
+            this.AAT = RecvCode;
+            //MessageBox.Show($"Main Form got the Code : {AuthUserAccessToken.Access_token}");
         }
     }
 }
