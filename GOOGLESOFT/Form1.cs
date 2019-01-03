@@ -25,6 +25,8 @@ namespace GOOGLESOFT
             InitializeComponent();
         }
         private AuthResponse AuthUserAccessToken;
+        private string YoutubeAPIKEY;
+
         public AuthResponse AAT
         {
             get
@@ -42,6 +44,8 @@ namespace GOOGLESOFT
         {
             this.SidePanel.Height = this.youtubeAPIButton.Height;
             this.SidePanel.Top = this.youtubeAPIButton.Top;
+            var YoutubeForm = new YoutubeAPIServiceForm(this.AAT);
+            YoutubeForm.ShowDialog();
         }
 
         private void GoogleStorageButton_Click(object sender, EventArgs e)
@@ -155,7 +159,7 @@ namespace GOOGLESOFT
         private void RecvAuthCode(AuthResponse RecvCode)
         {
             this.AAT = RecvCode;
-            //MessageBox.Show($"Main Form got the Code : {AuthUserAccessToken.Access_token}");
+            MessageBox.Show($"Main Form got the Code : {AuthUserAccessToken.Access_token}");
         }
     }
 }

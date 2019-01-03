@@ -72,7 +72,7 @@ namespace GOOGLESOFT
                     "554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com",
                     "k6QB-O_X71vatJwtDBe_9uKv",
                     "urn:ietf:wg:oauth:2.0:oob");
-                MessageBox.Show($"AccessToken = {access.Access_token}");
+                //MessageBox.Show($"AccessToken = {access.Access_token}");
                 this.AuthToken = access;
                 this.Close();
             }

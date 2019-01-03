@@ -73,6 +73,16 @@ namespace GOOGLESOFT.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap FormClose {
+            get {
+                object obj = ResourceManager.GetObject("FormClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap little_human {
             get {
                 object obj = ResourceManager.GetObject("little_human", resourceCulture);
@@ -116,6 +126,16 @@ namespace GOOGLESOFT.Properties {
         internal static System.Drawing.Bitmap onoff2 {
             get {
                 object obj = ResourceManager.GetObject("onoff2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchButton {
+            get {
+                object obj = ResourceManager.GetObject("searchButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
