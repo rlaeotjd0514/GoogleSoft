@@ -45,7 +45,7 @@ namespace GOOGLESOFT
             this.SidePanel.Height = this.youtubeAPIButton.Height;
             this.SidePanel.Top = this.youtubeAPIButton.Top;
             var YoutubeForm = new YoutubeAPIServiceForm(this.AAT);
-            YoutubeForm.ShowDialog();
+            YoutubeForm.Show();
         }
 
         private void GoogleStorageButton_Click(object sender, EventArgs e)
@@ -153,13 +153,22 @@ namespace GOOGLESOFT
 
             var LoginForm = new GoogleLoginForm(AuthResponse.GetAutenticationURI("554669990764-3rae9jmrbn2g31pq12vsqfimptfcfag7.apps.googleusercontent.com", ""));
             LoginForm.AuthEvent += new GoogleLoginForm.authdelegate(RecvAuthCode);
-            LoginForm.Show();
+            LoginForm.ShowDialog();
         }
 
         private void RecvAuthCode(AuthResponse RecvCode)
         {
-            this.AAT = RecvCode;
-            MessageBox.Show($"Main Form got the Code : {AuthUserAccessToken.Access_token}");
+            if (RecvCode != null)
+            {
+                this.AAT = RecvCode;
+                this.AccessTokenTextBox.Text = RecvCode.Access_token;
+                MessageBox.Show($"Main Form got the Code : {AuthUserAccessToken.Access_token}");
+            }
+        }
+
+        private void GoogleInnerViewPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

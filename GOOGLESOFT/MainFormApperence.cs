@@ -31,7 +31,7 @@ namespace GOOGLESOFT
             MPy = e.Y;
         }
 
-        
+
         private void LoginPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (MD == true)
@@ -51,8 +51,8 @@ namespace GOOGLESOFT
             MPx = e.X;
             MPy = e.Y;
         }
-        
-        
+
+
 
         private void LoginBoxID_MouseDown(object sender, MouseEventArgs e)
         {
@@ -70,7 +70,7 @@ namespace GOOGLESOFT
         private void LoginBoxPassword_MouseDown(object sender, MouseEventArgs e)
         {
             this.LoginBoxPassword.Text = "";
-            this.LoginBoxPassword.PasswordChar = 'ㅗ' ;
+            this.LoginBoxPassword.PasswordChar = 'ㅗ';
         }
         private void LoginBoxPassword_Leave(object sender, EventArgs e)
         {
