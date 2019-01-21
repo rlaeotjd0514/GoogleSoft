@@ -12,6 +12,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Threading;
 
 
 
@@ -21,42 +22,100 @@ namespace GOOGLESOFT
     {
         private AuthResponse UserAccessToken;
         private List<SearchResultControl> ResultControlList = new List<SearchResultControl>();
+        List<VideoJson> VideoArray = new List<VideoJson>();
+        delegate void D(int i, JToken J);
+
         public YoutubeAPIServiceForm(AuthResponse userattoken)
         {
             this.UserAccessToken = userattoken;
             InitializeComponent();
+            WebQueryAsync.WorkerReportsProgress = true;
+            WebQueryAsync.WorkerSupportsCancellation = true;
         }
 
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            string Keyword = this.KeyWord.Text;
+            this.WebQueryAsync.RunWorkerAsync();
+            /*string Keyword = this.KeyWord.Text;
             string requri = String.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q={0}&key={1}", Keyword, "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q");
             MessageBox.Show($"{requri}");
-            var res = httpWebGET(requri, null);
+            var res = await Task<JObject>.Run( () => httpWebGET(requri, null));
             MessageBox.Show($"{res.ToString()}");
-            List<VideoJson> VideoArray = new List<VideoJson>();
+            
             JArray VA = JArray.Parse(res["items"].ToString());
             MessageBox.Show($"{VA.Count}");
 
             int count = 0;
             foreach (var item in VA )
             {
-                VideoJson videoinfo = new VideoJson();
-                videoinfo.title = item["snippet"]["title"].ToString();
-                videoinfo.description = item["snippet"]["description"].ToString();
-                videoinfo.ThumbnailURL = item["snippet"]["thumbnails"]["default"]["url"].ToString();
-                VideoArray.Add(videoinfo);
-                SearchResultControl SRC = new SearchResultControl(videoinfo);
-                SRC.Location = new Point(0, count * 110);
-                this.SearchResult.Controls.Add(SRC);
-                ResultControlList.Add(SRC);
-                count++;
+                Thread T = new Thread( () => SetResultBox(count, item) );
+                D a = new D( SetResultBox );
+                try
+                {
+                    a.Invoke(count, item);
+                    count++;
+                }
+                catch ( Exception )
+                {
+                    a.Invoke(count, item);
+                    count++;
+                }
             } // 무조건 automouse = true 입니다.
             this.Text = "";
-            //this.SearchResult.Controls.AddRange(ResultControlList.ToArray());
+            //this.SearchResult.Controls.AddRange(ResultControlList.ToArray());*/
         }
-        public  JObject httpWebGET(string url, string Referer)
+        private async void WebQueryAsync_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string Keyword = this.KeyWord.Text;
+            string requri = String.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q={0}&key={1}", Keyword, "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q");
+            MessageBox.Show($"{requri}");
+            var res = await Task<JObject>.Run(() => httpWebGET(requri, null));
+            MessageBox.Show($"{res.ToString()}");
+
+            JArray VA = JArray.Parse(res["items"].ToString());
+            MessageBox.Show($"{VA.Count}");
+
+            int count = 0;
+            foreach (var item in VA)
+            {
+                Thread T = new Thread( delegate () { SetResultBox(count, item); });
+                D a = new D(SetResultBox);
+                T.Start();
+                count++;
+                /*try
+                {
+                    a.Invoke(count, item);
+                    count++;
+                }
+                catch (Exception)
+                {
+                    a.Invoke(count, item);
+                    count++;
+                }*/
+            }
+        }
+
+        private void WebQueryAsync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (var src in ResultControlList)
+            {
+                this.SearchResult.Controls.Add(src);
+            }
+        }
+        private void SetResultBox(int RunCount, JToken item)
+        {
+            VideoJson videoinfo = new VideoJson();
+            videoinfo.title = item["snippet"]["title"].ToString();
+            videoinfo.description = item["snippet"]["description"].ToString();
+            videoinfo.ThumbnailURL = item["snippet"]["thumbnails"]["default"]["url"].ToString();
+            VideoArray.Add(videoinfo);
+            SearchResultControl SRC = new SearchResultControl(videoinfo);
+            SRC.Location = new Point(0, RunCount * 110);
+            //this.SearchResult.Controls.Add(SRC);
+            ResultControlList.Add(SRC);
+        }
+        public JObject httpWebGET(string url, string Referer)
         {
             Uri uri = new Uri(url);
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -83,8 +142,16 @@ namespace GOOGLESOFT
 
         private void KeyWord_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if ( e.KeyCode == Keys.Enter)
+            
+        }
+
+
+        private void KeyWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //MessageBox.Show($"{Convert.ToInt32(e.KeyChar)}");
+            if (e.KeyChar == 13)
             {
+                e.KeyChar = Convert.ToChar(0);
                 MessageBox.Show("Enter!");
                 SearchButton_Click(sender, EventArgs.Empty);
                 /*string Keyword = this.KeyWord.Text;
