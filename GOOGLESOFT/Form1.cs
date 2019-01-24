@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
-
 using Google.Apis.YouTube;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Services;
@@ -23,6 +22,9 @@ namespace GOOGLESOFT
         public Form1()
         {
             InitializeComponent();
+            Bitmap Cs = new Bitmap(Bitmap.FromFile(@"..\..\Resources\brown_cursor.png"), new Size(30, 30));
+            Cs.MakeTransparent();
+            this.Cursor = new Cursor(Cs.GetHicon());
         }
         private AuthResponse AuthUserAccessToken;
         private string YoutubeAPIKEY;
