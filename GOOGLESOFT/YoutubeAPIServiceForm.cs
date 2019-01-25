@@ -80,15 +80,19 @@ namespace GOOGLESOFT
 
         private CountdownEvent ThreadEnd;
 
-        private void WebQueryAsync_DoWork(object sender, DoWorkEventArgs e)
+        private async void WebQueryAsync_DoWork(object sender, DoWorkEventArgs e)
         {
             string Keyword = this.KeyWord.Text;
             string requri = String.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q={0}&key={1}", Keyword, "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q");
             //MessageBox.Show($"{requri}");
-            //var res = await Task<JObject>.Run(() => httpWebGET(requri, null));// ㅋㅋ 설마 이걸 backgroudworker로 치는건 아니겠지 진짜 | 이야 맞네
-            var res = httpWebGET(requri, null);
+            Task<JObject> WQ = Task<JObject>.Run(() => httpWebGET(requri, null));// ㅋㅋ 설마 이걸 backgroudworker로 치는건 아니겠지 진짜 | 이야 맞네
+            //MessageBox.Show("웹쿼리가 끝나기를 기다리는중");
+            WQ.Wait();
+            var res = await WQ; //아니 이름은 기다린다라는 함순데 안기다림 await 는 .join이랑 다른건가?
+            //MessageBox.Show("웹쿼리 끝!");
+            //var res = httpWebGET(requri, null);
 
-            
+
             //MessageBox.Show($"{res.ToString()}");
 
             JArray VA = JArray.Parse(res["items"].ToString());
@@ -97,6 +101,7 @@ namespace GOOGLESOFT
             Thread[] T = new Thread[VA.Count];//검색한 페이지 수만큼 쓰레드 생성
             //MessageBox.Show($"총 {res["pageInfo"]["totalResults"].ToString()}개의 결과");
             int count = 0;
+            
             foreach (var item in VA)
             {
                 var localcount = count;
@@ -124,7 +129,7 @@ namespace GOOGLESOFT
             }
             ThreadEnd.Wait();
         }
-
+        //다운로드 기능은 다음에 추가
         private void WebQueryAsync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show($"BackgroundWork Complete!!\n종료된 작업 : {sender.ToString()}");           
@@ -229,5 +234,11 @@ namespace GOOGLESOFT
         public string title { get; set; }
         public string description { get; set; }
         public string ThumbnailURL { get; set; }
+        public string kind { get; set;}
+        public string vidioid { get; set; }
+        public string publishedAt { get; set; }
+        public string publishedChannel { get; set; }
+        public string nextPageToken { get; set; }
+        public int totalresult { get; set; }
     }
 }
