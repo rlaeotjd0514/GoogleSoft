@@ -91,8 +91,6 @@ namespace GOOGLESOFT
             var res = await WQ; //아니 이름은 기다린다라는 함순데 안기다림 await 는 .join이랑 다른건가?
             //MessageBox.Show("웹쿼리 끝!");
             //var res = httpWebGET(requri, null);
-
-
             //MessageBox.Show($"{res.ToString()}");
 
             JArray VA = JArray.Parse(res["items"].ToString());
@@ -101,7 +99,6 @@ namespace GOOGLESOFT
             Thread[] T = new Thread[VA.Count];//검색한 페이지 수만큼 쓰레드 생성
             //MessageBox.Show($"총 {res["pageInfo"]["totalResults"].ToString()}개의 결과");
             int count = 0;
-            
             foreach (var item in VA)
             {
                 var localcount = count;
@@ -132,7 +129,7 @@ namespace GOOGLESOFT
         //다운로드 기능은 다음에 추가
         private void WebQueryAsync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show($"BackgroundWork Complete!!\n종료된 작업 : {sender.ToString()}");           
+            //MessageBox.Show($"BackgroundWork Complete!!\n종료된 작업 : {sender.ToString()}");           
             foreach (var src in ResultControlList)
             {
                 this.SearchResult.Controls.Add(src);
@@ -146,7 +143,17 @@ namespace GOOGLESOFT
             videoinfo.title = $"Count : {RunCount.ToString()}" + item["snippet"]["title"].ToString();
             videoinfo.description = item["snippet"]["description"].ToString();
             videoinfo.ThumbnailURL = item["snippet"]["thumbnails"]["default"]["url"].ToString();
-            
+            videoinfo.kind = item["id"]["kind"].ToString();
+            if(videoinfo.kind == "youtube#video")
+            {
+                videoinfo.vidioid = item["id"]["videoId"].ToString();
+            }
+            else if(videoinfo.kind == "youtube#channel")
+            {
+                videoinfo.vidioid = item["id"]["channelId"].ToString();
+            }
+            videoinfo.publishedAt = item["snippet"]["publishedAt"].ToString();
+            videoinfo.publishedChannel = item["snippet"]["channelTitle"].ToString();
             VideoArray.Add(videoinfo); //쓰레드헤서 돌아가는 함수이므로 전역변수 접근은 지양해야함
             SearchResultControl SRC = new SearchResultControl(videoinfo);
             SRC.Location = new Point(0, RunCount * 110);
@@ -165,7 +172,7 @@ namespace GOOGLESOFT
             request.ContentType = "application/x-www-form-urlencoded";
             request.KeepAlive = true;
             request.AllowAutoRedirect = false;
-
+            
             var response = (HttpWebResponse)request.GetResponse();
             var readerPost = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8, true);   // Encoding.GetEncoding("EUC-KR")
             var resResult = readerPost.ReadToEnd();
@@ -203,7 +210,7 @@ namespace GOOGLESOFT
 
         bool MD;
         int MPx, MPy;
-
+        
         private void YoutubFormMover_MouseDown(object sender, MouseEventArgs e)
         {
             MD = true;
@@ -222,6 +229,14 @@ namespace GOOGLESOFT
         private void WebQueryAsync_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.SearchPercent.Text = $"{e.ProgressPercentage.ToString()}%";
+        }
+
+        private void button3_Click(object sender, EventArgs e) //임시 다운로드 테스트용
+        {
+            string imsi_url = this.downloadUrl.Text;
+            WebClient WC = new WebClient();
+            WC.DownloadFile(imsi_url, @"C:\Users\minerva\Desktop\test.mp4");
+            MessageBox.Show("다운로드 완료");
         }
 
         private void YoutubFormMover_MouseUp(object sender, MouseEventArgs e)

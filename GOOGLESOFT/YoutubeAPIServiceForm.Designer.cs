@@ -38,6 +38,8 @@
             this.SearchResult = new System.Windows.Forms.Panel();
             this.WebQueryAsync = new System.ComponentModel.BackgroundWorker();
             this.SearchPercent = new System.Windows.Forms.Label();
+            this.downloadUrl = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.YoutubFormMover.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +87,7 @@
             this.KeyWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.KeyWord.Font = new System.Drawing.Font("맑은 고딕", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.KeyWord.Location = new System.Drawing.Point(4, 4);
-            this.KeyWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KeyWord.Margin = new System.Windows.Forms.Padding(4);
             this.KeyWord.Multiline = true;
             this.KeyWord.Name = "KeyWord";
             this.KeyWord.Size = new System.Drawing.Size(438, 32);
@@ -142,12 +144,31 @@
             this.SearchPercent.TabIndex = 6;
             this.SearchPercent.Text = "label2";
             // 
+            // downloadUrl
+            // 
+            this.downloadUrl.Location = new System.Drawing.Point(805, 151);
+            this.downloadUrl.Name = "downloadUrl";
+            this.downloadUrl.Size = new System.Drawing.Size(235, 21);
+            this.downloadUrl.TabIndex = 7;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1046, 149);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "download";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // YoutubeAPIServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1172, 630);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.downloadUrl);
             this.Controls.Add(this.SearchPercent);
             this.Controls.Add(this.SearchResult);
             this.Controls.Add(this.button2);
@@ -178,5 +199,7 @@
         private System.Windows.Forms.Panel SearchResult;
         private System.ComponentModel.BackgroundWorker WebQueryAsync;
         private System.Windows.Forms.Label SearchPercent;
+        private System.Windows.Forms.TextBox downloadUrl;
+        private System.Windows.Forms.Button button3;
     }
 }
