@@ -47,7 +47,7 @@ namespace GOOGLESOFT
                 WebQueryAsync.CancelAsync();
             }
 
-
+            
             this.WebQueryAsync.RunWorkerAsync();
             /*string Keyword = this.KeyWord.Text;
             string requri = String.Format("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q={0}&key={1}", Keyword, "AIzaSyDBDHd7KZ3hkzARnkrxAFHZzw6vDMLX72Q");
@@ -133,8 +133,13 @@ namespace GOOGLESOFT
             foreach (var src in ResultControlList)
             {
                 this.SearchResult.Controls.Add(src);
-            }
-            
+            }  
+        }
+
+        public void SetResJson(object con, EventArgs e)
+        {
+            JObject res = (JObject)con;
+            this.JsonResult.Text = res.ToString();
         }
 
         private void SetResultBox(int RunCount, JToken item)
@@ -156,6 +161,7 @@ namespace GOOGLESOFT
             videoinfo.publishedChannel = item["snippet"]["channelTitle"].ToString();
             VideoArray.Add(videoinfo); //쓰레드헤서 돌아가는 함수이므로 전역변수 접근은 지양해야함
             SearchResultControl SRC = new SearchResultControl(videoinfo);
+            SRC.JsonRes += new EventHandler(SetResJson);
             SRC.Location = new Point(0, RunCount * 110);
             //this.SearchResult.Controls.Add(SRC);
             ResultControlList.Add(SRC);//이거도 안좋긴한데 그래도 위치값은 인자로 받아오니까 괜찮을듯 아마?

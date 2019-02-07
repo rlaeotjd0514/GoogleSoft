@@ -40,6 +40,7 @@
             this.SearchPercent = new System.Windows.Forms.Label();
             this.downloadUrl = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.JsonResult = new System.Windows.Forms.RichTextBox();
             this.YoutubFormMover.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -161,12 +162,21 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // JsonResult
+            // 
+            this.JsonResult.Location = new System.Drawing.Point(622, 178);
+            this.JsonResult.Name = "JsonResult";
+            this.JsonResult.Size = new System.Drawing.Size(538, 440);
+            this.JsonResult.TabIndex = 9;
+            this.JsonResult.Text = "";
+            // 
             // YoutubeAPIServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1172, 630);
+            this.Controls.Add(this.JsonResult);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.downloadUrl);
             this.Controls.Add(this.SearchPercent);
@@ -201,5 +211,6 @@
         private System.Windows.Forms.Label SearchPercent;
         private System.Windows.Forms.TextBox downloadUrl;
         private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.RichTextBox JsonResult;
     }
 }

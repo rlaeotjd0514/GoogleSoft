@@ -16,7 +16,6 @@ using System.IO;
 using System.Net.WebSockets;
 using System.Net.Sockets;
 
-
 namespace GOOGLESOFT
 {
     public partial class SearchResultControl : UserControl
@@ -28,7 +27,11 @@ namespace GOOGLESOFT
         private string channelid;
         private string videoid;
         private string kind;
-        private HttpClientHandler HCH;
+        private static HttpClientHandler HCH;
+
+        
+        
+        
         
         public SearchResultControl(VideoJson info)
         {
@@ -48,13 +51,15 @@ namespace GOOGLESOFT
                 this.Mp3DownloadButton.Visible = false;
                 this.mp4DownloadButton.Visible = false;
             }
-            HCH = new HttpClientHandler();
-            if( HCH.SupportsAutomaticDecompression )
-            {
-                HCH.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            }
-            HCH.UseCookies = false;
+
+            DownloadProgressBar.Maximum = 99;
+            DownloadProgressBar.Minimum = 0;
+            DownloadProgressBar.Step = 1;
+            DownloadProgressBar.Value = 0;
         }
+
+        public event EventHandler JsonRes;
+        JObject result_Json;
 
         private async void mp4DownloadButton_Click(object sender, EventArgs e)
         {
@@ -62,30 +67,47 @@ namespace GOOGLESOFT
             string videoID = this.videoid;
             string eurl = $"https://youtube.googleapis.com/v/{videoID}";
             eurl = WebUtility.UrlEncode(eurl);
-            string url = $"https://www.youtube.com/get_video_info?video_id={videoID}&el=embedded&eurl={eurl}&hl=en";//웹스트림
-            MessageBox.Show(url);
+            string url = $"https://www.youtube.com/get_video_info?video_id={videoID}&el=embedded&eurl={eurl}&hl=en/get_video_info";//웹스트림
             this.intersource.Text = url;
             //Form navi = new GoogleLoginForm(new Uri(url));
             //string r = httpWebGET(url, url);
             //MessageBox.Show(r);
-            WebClient wc = new WebClient();
+            
             //Task InterFile = wc.DownloadFileTaskAsync(new Uri(url), @".\imsi");
-            //InterFile.Start();         
-            bool en = true;
-            var client = new HttpClient(HCH, true);
-            using (var r = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
+            //InterFile.Start();
+            var client = httpClient.GetSingleClient();
+            var resu = await client.GetStringHttp(url);
+            MessageBox.Show(resu);// 비디오의 정보를 가져오는 중
+            result_Json = ParsePlayerResponse(resu);
+            MessageBox.Show($"{result_Json.ToString()}");// 비디오를 다운로드하는중
+
+            JsonRes(result_Json, EventArgs.Empty);
+
+            string video_url = result_Json["streamingData"]["formats"][2]["url"].ToString();
+
+            MessageBox.Show(video_url);
+
+            using (var wc = new WebClient())
             {
-                //MessageBox.Show("IN USING");
+                wc.DownloadFileCompleted += download_complete;
+                wc.DownloadProgressChanged += download_progress_step;
+                wc.DownloadFileAsync(new Uri(video_url), DateTime.Now.ToString(@"yyyyMMddhhmmss.mp4"));
+            }
+
+            
+
+            /*using (var r = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
+            {
+                MessageBox.Show("IN USING");
                 if (en)
                 {
                     //MessageBox.Show("IN ensurence!");
                     r.EnsureSuccessStatusCode();
                 }
-                var res = await r.Content.ReadAsStringAsync().ConfigureAwait(false);
+                MessageBox.Show(url);
+                string res = await r.Content.ReadAsStringAsync().ConfigureAwait(false);
                 MessageBox.Show(res);
             }
-
-
             /*FileStream FS = new FileStream(@".\imsi" , FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(FS);
             string res = await sr.ReadToEndAsync();
@@ -96,10 +118,28 @@ namespace GOOGLESOFT
             File.Delete(@"..\imsi.txt");*/
         }
 
-        public void download_complete(object sender, EventArgs e)
+        void download_complete(object sender, EventArgs e)
         {
             MessageBox.Show("Download Complete!!");
         }
+
+        void download_progress_step(object sender, EventArgs e)
+        {
+            this.DownloadProgressBar.PerformStep();
+        }
+
+        public JObject ParsePlayerResponse(string ServerRes)
+        {
+            int start = ServerRes.IndexOf(@"player_response=");
+            start = start + "player_response=".Length;
+            int end = ServerRes.IndexOf(@"}&");
+            string parse = ServerRes.Substring(start, end - start + 1/*&는 제이슨에 포함 안댐*/);
+            MessageBox.Show(parse);
+            var ret = JObject.Parse(parse);
+            return ret;
+        }
+
+        
 
         public string httpWebGET(string url, string Referer)
         {

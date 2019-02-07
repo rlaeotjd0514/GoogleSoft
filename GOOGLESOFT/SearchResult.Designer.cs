@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.Label();
             this.Thumbnail = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.DownloadProgressBar = new System.Windows.Forms.ProgressBar();
             this.mp4DownloadButton = new System.Windows.Forms.Button();
             this.Mp3DownloadButton = new System.Windows.Forms.Button();
             this.intersource = new System.Windows.Forms.TextBox();
@@ -76,18 +76,18 @@
             this.Thumbnail.TabIndex = 0;
             this.Thumbnail.TabStop = false;
             // 
-            // progressBar1
+            // DownloadProgressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(500, 101);
-            this.progressBar1.TabIndex = 4;
+            this.DownloadProgressBar.Location = new System.Drawing.Point(0, 0);
+            this.DownloadProgressBar.Name = "DownloadProgressBar";
+            this.DownloadProgressBar.Size = new System.Drawing.Size(500, 101);
+            this.DownloadProgressBar.TabIndex = 4;
             // 
             // mp4DownloadButton
             // 
             this.mp4DownloadButton.Location = new System.Drawing.Point(8, 72);
             this.mp4DownloadButton.Name = "mp4DownloadButton";
-            this.mp4DownloadButton.Size = new System.Drawing.Size(59, 23);
+            this.mp4DownloadButton.Size = new System.Drawing.Size(43, 23);
             this.mp4DownloadButton.TabIndex = 5;
             this.mp4DownloadButton.Text = "Mp4";
             this.mp4DownloadButton.UseVisualStyleBackColor = true;
@@ -95,9 +95,9 @@
             // 
             // Mp3DownloadButton
             // 
-            this.Mp3DownloadButton.Location = new System.Drawing.Point(69, 72);
+            this.Mp3DownloadButton.Location = new System.Drawing.Point(85, 72);
             this.Mp3DownloadButton.Name = "Mp3DownloadButton";
-            this.Mp3DownloadButton.Size = new System.Drawing.Size(59, 23);
+            this.Mp3DownloadButton.Size = new System.Drawing.Size(43, 23);
             this.Mp3DownloadButton.TabIndex = 5;
             this.Mp3DownloadButton.Text = "Mp3";
             this.Mp3DownloadButton.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.Thumbnail);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.DownloadProgressBar);
             this.Name = "SearchResultControl";
             this.Size = new System.Drawing.Size(500, 101);
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).EndInit();
@@ -135,7 +135,7 @@
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Description;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar DownloadProgressBar;
         private System.Windows.Forms.Button mp4DownloadButton;
         private System.Windows.Forms.Button Mp3DownloadButton;
         private System.Windows.Forms.TextBox intersource;

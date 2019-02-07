@@ -168,6 +168,7 @@
     <Compile Include="GoogleLoginForm.Designer.cs">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="httpClient.cs" />
     <Compile Include="MainFormApperence.cs">
       <SubType>Form</SubType>
     </Compile>
