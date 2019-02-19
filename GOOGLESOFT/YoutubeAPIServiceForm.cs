@@ -101,28 +101,10 @@ namespace GOOGLESOFT
             int count = 0;
             foreach (var item in VA)
             {
-                var localcount = count;
-                //MessageBox.Show(count.ToString());
-                T[count] = new Thread(delegate () { SetResultBox(localcount, item); });//인자로 주는데도 같은 인자를 가진 쓰레드가 왜나오는거야..
-                //D a = new D(SetResultBox);
-                /*if( count == VA.Count - 1)
-                {
-                    T.Start();
-                    T.Join(); //마지막 쓰레드는 끝날때까지 기다리기
-                    MessageBox.Show("Do_Work Loop End");
-                }*/
+                var localcount = count;                
+                T[count] = new Thread(delegate () { SetResultBox(localcount, item); });//인자로 주는데도 같은 인자를 가진 쓰레드가 왜나오는거야..                
                 T[count].Start();
-                count++; //이 쓰레드들이 모두 작업이 완료 될 때까지 Do_Work함수가 끝나지않고 실행되게 보장해줘야함...
-                /*try
-                {
-                    a.Invoke(count, item);
-                    count++;
-                }
-                catch (Exception)
-                {
-                    a.Invoke(count, item);
-                    count++;
-                }*/
+                count++;
             }
             ThreadEnd.Wait();
         }
@@ -145,7 +127,7 @@ namespace GOOGLESOFT
         private void SetResultBox(int RunCount, JToken item)
         {
             VideoJson videoinfo = new VideoJson();
-            videoinfo.title = $"Count : {RunCount.ToString()}" + item["snippet"]["title"].ToString();
+            videoinfo.title = item["snippet"]["title"].ToString();
             videoinfo.description = item["snippet"]["description"].ToString();
             videoinfo.ThumbnailURL = item["snippet"]["thumbnails"]["default"]["url"].ToString();
             videoinfo.kind = item["id"]["kind"].ToString();
@@ -159,7 +141,7 @@ namespace GOOGLESOFT
             }
             videoinfo.publishedAt = item["snippet"]["publishedAt"].ToString();
             videoinfo.publishedChannel = item["snippet"]["channelTitle"].ToString();
-            VideoArray.Add(videoinfo); //쓰레드헤서 돌아가는 함수이므로 전역변수 접근은 지양해야함
+            VideoArray.Add(videoinfo); //쓰레드에서 돌아가는 함수이므로 전역변수 접근은 지양해야함
             SearchResultControl SRC = new SearchResultControl(videoinfo);
             SRC.JsonRes += new EventHandler(SetResJson);
             SRC.Location = new Point(0, RunCount * 110);
@@ -241,7 +223,7 @@ namespace GOOGLESOFT
         {
             string imsi_url = this.downloadUrl.Text;
             WebClient WC = new WebClient();
-            WC.DownloadFile(imsi_url, @"C:\Users\minerva\Desktop\test.mp4");
+            WC.DownloadFile(imsi_url, @"test.mp4");
             MessageBox.Show("다운로드 완료");
         }
 

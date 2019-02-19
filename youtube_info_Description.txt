@@ -1,0 +1,2 @@
+연관검색/키워드 = videoDetails 태그에 keywords 배열
+

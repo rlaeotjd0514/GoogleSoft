@@ -27,11 +27,7 @@ namespace GOOGLESOFT
         private string channelid;
         private string videoid;
         private string kind;
-        private static HttpClientHandler HCH;
-
-        
-        
-        
+        private static HttpClientHandler HCH;                        
         
         public SearchResultControl(VideoJson info)
         {
@@ -48,8 +44,8 @@ namespace GOOGLESOFT
             kind = info.kind;
             if(!kind.Contains("video"))
             {
-                this.Mp3DownloadButton.Visible = false;
-                this.mp4DownloadButton.Visible = false;
+                this.Mp3DownloadButton.Dispose();
+                this.mp4DownloadButton.Dispose();
             }
 
             DownloadProgressBar.Maximum = 99;
@@ -69,33 +65,28 @@ namespace GOOGLESOFT
             eurl = WebUtility.UrlEncode(eurl);
             string url = $"https://www.youtube.com/get_video_info?video_id={videoID}&el=embedded&eurl={eurl}&hl=en/get_video_info";//웹스트림
             this.intersource.Text = url;
-            //Form navi = new GoogleLoginForm(new Uri(url));
-            //string r = httpWebGET(url, url);
-            //MessageBox.Show(r);
             
             //Task InterFile = wc.DownloadFileTaskAsync(new Uri(url), @".\imsi");
             //InterFile.Start();
             var client = httpClient.GetSingleClient();
             var resu = await client.GetStringHttp(url);
-            MessageBox.Show(resu);// 비디오의 정보를 가져오는 중
+            //MessageBox.Show(resu);// 비디오의 정보를 가져오는 중
             result_Json = ParsePlayerResponse(resu);
-            MessageBox.Show($"{result_Json.ToString()}");// 비디오를 다운로드하는중
+            //MessageBox.Show($"{result_Json.ToString()}");// 비디오를 다운로드하는중
 
-            JsonRes(result_Json, EventArgs.Empty);
+            JsonRes(result_Json, EventArgs.Empty);//유튜브 폼에 받아온 제이선 파일 표시
 
-            string video_url = result_Json["streamingData"]["formats"][2]["url"].ToString();
+            string video_url = result_Json["streamingData"]["formats"][2]["url"].ToString();            
 
-            MessageBox.Show(video_url);
+            //MessageBox.Show(video_url);
 
             using (var wc = new WebClient())
             {
+                string filename = DateTime.Now.ToString(@"yyyyMMddhhmmss") + ".mp4";
                 wc.DownloadFileCompleted += download_complete;
                 wc.DownloadProgressChanged += download_progress_step;
-                wc.DownloadFileAsync(new Uri(video_url), DateTime.Now.ToString(@"yyyyMMddhhmmss.mp4"));
-            }
-
-            
-
+                wc.DownloadFileAsync(new Uri(video_url), filename);
+            }            
             /*using (var r = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
             {
                 MessageBox.Show("IN USING");
@@ -134,12 +125,10 @@ namespace GOOGLESOFT
             start = start + "player_response=".Length;
             int end = ServerRes.IndexOf(@"}&");
             string parse = ServerRes.Substring(start, end - start + 1/*&는 제이슨에 포함 안댐*/);
-            MessageBox.Show(parse);
+            //MessageBox.Show(parse);
             var ret = JObject.Parse(parse);
             return ret;
-        }
-
-        
+        }        
 
         public string httpWebGET(string url, string Referer)
         {
@@ -156,6 +145,45 @@ namespace GOOGLESOFT
             var readerPost = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8, true);   // Encoding.GetEncoding("EUC-KR")
             var resResult = readerPost.ReadToEnd();
             return resResult;
+        }
+
+        private async void Mp3DownloadButton_Click(object sender, EventArgs e)
+        {
+            string videoID = this.videoid;
+            string eurl = $"https://youtube.googleapis.com/v/{videoID}";
+            eurl = WebUtility.UrlEncode(eurl);
+            string url = $"https://www.youtube.com/get_video_info?video_id={videoID}&el=embedded&eurl={eurl}&hl=en/get_video_info";//웹스트림
+            this.intersource.Text = url;
+
+            //Task InterFile = wc.DownloadFileTaskAsync(new Uri(url), @".\imsi");
+            //InterFile.Start();
+            var client = httpClient.GetSingleClient();
+            var resu = await client.GetStringHttp(url);
+            //MessageBox.Show(resu);// 비디오의 정보를 가져오는 중
+            result_Json = ParsePlayerResponse(resu);
+            //MessageBox.Show($"{result_Json.ToString()}");// 비디오를 다운로드하는중
+            JsonRes(result_Json, EventArgs.Empty);//유튜브 폼에 받아온 제이선 파일 표시
+
+            JToken[] adlist = result_Json["streamingData"]["adaptiveFormats"].ToArray<JToken>();
+            url = "";
+            foreach(var it in adlist)
+            {
+                if (it["mimeType"].ToString().Contains("audio/mp4")) url = it["url"].ToString();
+            }
+
+            if(url == "")
+            {
+                MessageBox.Show("There is no audio link in this video");
+                return;
+            }
+
+            using (WebClient wc = new WebClient())
+            {
+                this.DownloadProgressBar.Value = 0;
+                wc.DownloadFileCompleted += download_complete;
+                wc.DownloadProgressChanged += download_progress_step;
+                wc.DownloadFileAsync(new Uri(url), DateTime.Now.ToString("yyyymmddhhmmss") + ".mp3");                                
+            }
         }
     }
 }

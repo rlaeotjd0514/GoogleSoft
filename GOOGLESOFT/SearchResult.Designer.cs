@@ -43,51 +43,57 @@
             // 
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("맑은 고딕", 13.5F, System.Drawing.FontStyle.Bold);
-            this.Title.Location = new System.Drawing.Point(152, 3);
+            this.Title.Location = new System.Drawing.Point(190, 8);
+            this.Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(63, 25);
+            this.Title.Size = new System.Drawing.Size(94, 37);
             this.Title.TabIndex = 1;
             this.Title.Text = "label1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(157, 32);
+            this.label1.Location = new System.Drawing.Point(224, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 12);
+            this.label1.Size = new System.Drawing.Size(54, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
             // Description
             // 
             this.Description.AutoSize = true;
-            this.Description.Location = new System.Drawing.Point(158, 32);
+            this.Description.Location = new System.Drawing.Point(194, 48);
+            this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(88, 12);
+            this.Description.Size = new System.Drawing.Size(126, 18);
             this.Description.TabIndex = 3;
             this.Description.Text = "No Description";
             // 
             // Thumbnail
             // 
-            this.Thumbnail.Location = new System.Drawing.Point(8, 5);
+            this.Thumbnail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Thumbnail.Location = new System.Drawing.Point(11, 8);
             this.Thumbnail.Margin = new System.Windows.Forms.Padding(0);
             this.Thumbnail.Name = "Thumbnail";
-            this.Thumbnail.Size = new System.Drawing.Size(120, 90);
+            this.Thumbnail.Size = new System.Drawing.Size(175, 135);
             this.Thumbnail.TabIndex = 0;
             this.Thumbnail.TabStop = false;
             // 
             // DownloadProgressBar
             // 
             this.DownloadProgressBar.Location = new System.Drawing.Point(0, 0);
+            this.DownloadProgressBar.Margin = new System.Windows.Forms.Padding(4);
             this.DownloadProgressBar.Name = "DownloadProgressBar";
-            this.DownloadProgressBar.Size = new System.Drawing.Size(500, 101);
+            this.DownloadProgressBar.Size = new System.Drawing.Size(714, 152);
             this.DownloadProgressBar.TabIndex = 4;
             // 
             // mp4DownloadButton
             // 
-            this.mp4DownloadButton.Location = new System.Drawing.Point(8, 72);
+            this.mp4DownloadButton.Location = new System.Drawing.Point(11, 108);
+            this.mp4DownloadButton.Margin = new System.Windows.Forms.Padding(4);
             this.mp4DownloadButton.Name = "mp4DownloadButton";
-            this.mp4DownloadButton.Size = new System.Drawing.Size(43, 23);
+            this.mp4DownloadButton.Size = new System.Drawing.Size(61, 34);
             this.mp4DownloadButton.TabIndex = 5;
             this.mp4DownloadButton.Text = "Mp4";
             this.mp4DownloadButton.UseVisualStyleBackColor = true;
@@ -95,23 +101,26 @@
             // 
             // Mp3DownloadButton
             // 
-            this.Mp3DownloadButton.Location = new System.Drawing.Point(85, 72);
+            this.Mp3DownloadButton.Location = new System.Drawing.Point(125, 108);
+            this.Mp3DownloadButton.Margin = new System.Windows.Forms.Padding(4);
             this.Mp3DownloadButton.Name = "Mp3DownloadButton";
-            this.Mp3DownloadButton.Size = new System.Drawing.Size(43, 23);
+            this.Mp3DownloadButton.Size = new System.Drawing.Size(61, 34);
             this.Mp3DownloadButton.TabIndex = 5;
             this.Mp3DownloadButton.Text = "Mp3";
             this.Mp3DownloadButton.UseVisualStyleBackColor = true;
+            this.Mp3DownloadButton.Click += new System.EventHandler(this.Mp3DownloadButton_Click);
             // 
             // intersource
             // 
-            this.intersource.Location = new System.Drawing.Point(160, 73);
+            this.intersource.Location = new System.Drawing.Point(229, 110);
+            this.intersource.Margin = new System.Windows.Forms.Padding(4);
             this.intersource.Name = "intersource";
-            this.intersource.Size = new System.Drawing.Size(337, 21);
+            this.intersource.Size = new System.Drawing.Size(480, 28);
             this.intersource.TabIndex = 6;
             // 
             // SearchResultControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.intersource);
             this.Controls.Add(this.Mp3DownloadButton);
@@ -121,8 +130,9 @@
             this.Controls.Add(this.Title);
             this.Controls.Add(this.Thumbnail);
             this.Controls.Add(this.DownloadProgressBar);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchResultControl";
-            this.Size = new System.Drawing.Size(500, 101);
+            this.Size = new System.Drawing.Size(714, 152);
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
