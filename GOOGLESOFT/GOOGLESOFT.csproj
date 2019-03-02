@@ -155,11 +155,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputeApiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComputeApiForm.Designer.cs">
+      <DependentUpon>ComputeApiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoogleDriveAPIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoogleDriveAPIForm.Designer.cs">
+      <DependentUpon>GoogleDriveAPIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GoogleLogin.cs" />
     <Compile Include="GoogleLoginForm.cs">
@@ -187,8 +199,14 @@
     <Compile Include="YoutubeAPIServiceForm.Designer.cs">
       <DependentUpon>YoutubeAPIServiceForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ComputeApiForm.resx">
+      <DependentUpon>ComputeApiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoogleDriveAPIForm.resx">
+      <DependentUpon>GoogleDriveAPIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GoogleLoginForm.resx">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
@@ -246,6 +264,7 @@
     <None Include="Resources\FormClose.png" />
     <None Include="Resources\searchButton.png" />
     <Content Include="Resources\brown_cursor.png" />
+    <None Include="Resources\GoogleDriveFormTopToolbar.png" />
     <Content Include="Resources\헷갈림방지.txt" />
     <None Include="Resources\downarrow.png" />
     <Content Include="Resources\Logs.txt" />

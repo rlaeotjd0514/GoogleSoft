@@ -64,6 +64,7 @@ namespace GOOGLESOFT
 
         private void GoogleDriveButton_Click(object sender, EventArgs e)
         {
+
             this.SidePanel.Height = this.GoogleDriveButton.Height;
             this.SidePanel.Top = this.GoogleDriveButton.Top;
         }
