@@ -32,8 +32,6 @@ namespace GOOGLESOFT
         public string secret { get; set; }
         public string expires_in { get; set; }
         public DateTime created { get; set; }
-
-
         /// 
 
         /// Parse the json response 
@@ -50,7 +48,6 @@ namespace GOOGLESOFT
             result.created = DateTime.Now;   // DateTime.Now.Add(new TimeSpan(-2, 0, 0)); //For testing force refresh.
             return result;
         }
-
 
         public void refresh()
         {
@@ -101,7 +98,8 @@ namespace GOOGLESOFT
         }
         public static Uri GetAutenticationURI(string clientId, string redirectUri)
         {
-            string scopes = "https://www.googleapis.com/auth/plus.login email";
+            //string scopes = "https://www.googleapis.com/auth/plus.login&https://www.googleapis.com/auth/compute email";
+            string scopes = "https://www.googleapis.com/auth/compute email";
 
             if (string.IsNullOrEmpty(redirectUri))
             {

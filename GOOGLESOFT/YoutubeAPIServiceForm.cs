@@ -42,9 +42,9 @@ namespace GOOGLESOFT
         {
             ResultControlList = new List<SearchResultControl>();
             this.SearchResult.Controls.Clear();
-            if(WebQueryAsync.IsBusy == true)//오동작
+            if(WebQueryAsync.IsBusy == true)
             {
-                WebQueryAsync.CancelAsync();
+                return;
             }
 
             

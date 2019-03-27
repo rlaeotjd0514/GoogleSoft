@@ -26,8 +26,7 @@ namespace GOOGLESOFT
             Cs.MakeTransparent();
             this.Cursor = new Cursor(Cs.GetHicon());
         }
-        private AuthResponse AuthUserAccessToken;
-        private string YoutubeAPIKEY;
+        private AuthResponse AuthUserAccessToken;        
 
         public AuthResponse AAT
         {
@@ -79,6 +78,7 @@ namespace GOOGLESOFT
         {
             this.SidePanel.Height = this.GoogleComputeButton.Height;
             this.SidePanel.Top = this.GoogleComputeButton.Top;
+            new ComputeApiForm(AAT).Show();
         }
 
         private void GoogleSheetButton_Click(object sender, EventArgs e)
@@ -128,7 +128,6 @@ namespace GOOGLESOFT
             var GoogleToken = new GoogleLogin();
             var GoogleCred = await GoogleToken.SetLoginCredencial();
             var req = new YouTubeService(GoogleCred);   //GoogleCred는 BaseClientService.Initializer타입
-
             string API = req.ApiKey.ToString();
             this.ApiLabel.Text = API;
         }

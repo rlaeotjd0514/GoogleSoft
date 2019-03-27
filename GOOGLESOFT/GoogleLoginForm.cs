@@ -47,14 +47,9 @@ namespace GOOGLESOFT
             //MessageBox.Show($"{ind}");
             if (Mytitle.IndexOf("success code=") > -1)
             {
-                //LoginBrowser.Visible = false;
-
-                // searching the body for our code
                 string AuthCode = LoginBrowser.DocumentTitle.Replace("Success code=", "");
                 // 여기부터 수정하십쇼 [2018 12 29 23:57]
                 string webText = ((WebBrowser)sender).DocumentText;
-                //MessageBox.Show($"{webText}");
-                //int start = webText.IndexOf("id=\"code\"");
                 int start = webText.IndexOf("code=") + 5;
                 int end = webText.IndexOf(@"&");
 
