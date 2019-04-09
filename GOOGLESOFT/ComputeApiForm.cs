@@ -14,13 +14,28 @@ namespace GOOGLESOFT
 {
     public partial class ComputeApiForm : Form
     {
+
+        private AuthResponse ATT;
+        private ComputeServiceInstance MonoComputeService;
+
         public ComputeApiForm(AuthResponse ATT)
         {
             InitializeComponent();
             this.ATT = ATT;
+            MonoComputeService = GetServiceInstance();
         }
 
-        private AuthResponse ATT;
+        internal ComputeServiceInstance GetServiceInstance()
+        {
+            if (MonoComputeService != null)
+            {
+                return MonoComputeService;
+            }
+            else
+            {
+                return new ComputeServiceInstance("youtube-gui-225813", "YOUTUBE GUI", ATT);
+            }
+        }        
 
         private void ComputeApiForm_Load(object sender, EventArgs e)
         {
@@ -28,9 +43,55 @@ namespace GOOGLESOFT
         }
 
         private void CreateInstanceButton_Click(object sender, EventArgs e)
-        {
-            var Server = new ComputeServiceInstance("youtube-gui-225813", "YOUTUBE GUI", ATT);
-            Server.TestCreateInstance("kimjjang-31", "asia-east1-a", "zones/asia-east1-a/machineTypes/n1-standard-1", "debian-9", "debian-cloud", 100);
+        {             
+            MonoComputeService.TestCreateInstance("kimjjang-31", "asia-east1-a", "zones/asia-east1-a/machineTypes/n1-standard-1", "debian-9", "debian-cloud", 100);
+            //테스트용 인스턴스 Name
         }
+
+        private void RunInstanceButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(MonoComputeService.RuninstanceByName("kimjjang-31"));
+        }
+
+        private void CloseFormButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TestStatusButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(MonoComputeService.GetInstanceStatus("kimjjang-31"));
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            var ret = MonoComputeService.RemoveInstance("kimjjang-31", "asia-east1-a");
+            MessageBox.Show(ret);
+        }    
+        #region 폼 이동
+        bool MD;
+        int MPx;
+        int MPy;
+
+        private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (MD == true)
+            {
+                this.SetDesktopLocation(MousePosition.X - MPx, MousePosition.Y - MPy);
+            }
+        }
+
+        private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            MD = false;
+        }
+
+        private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            MD = true;
+            MPx = e.X;
+            MPy = e.Y;
+        }
+        #endregion
     }
 }

@@ -165,6 +165,9 @@
       <DependentUpon>ComputeApiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ComputeClass\ComputeFucntion.cs" />
+    <Compile Include="ComputeClass\ComputeData\AttachDisk.cs" />
+    <Compile Include="ComputeClass\ComputeData\MetaData.cs" />
+    <Compile Include="ComputeClass\ComputeData\NetworkInterfaces.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,5 +276,6 @@
     <None Include="Resources\downarrow.png" />
     <Content Include="Resources\Logs.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
