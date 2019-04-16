@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GOOGLESOFT.ComputeClass;
 using Google.Apis.Compute.v1;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace GOOGLESOFT
 {
     public partial class ComputeApiForm : Form
     {
-
         private AuthResponse ATT;
         private ComputeServiceInstance MonoComputeService;
 
@@ -93,5 +94,13 @@ namespace GOOGLESOFT
             MPy = e.Y;
         }
         #endregion
+
+        private void GetSSHbutton_Click(object sender, EventArgs e)
+        {
+            //Stream pks = File.Open(@"C:\Users\lotte_test\Desktop\개인 프로젝트\GoogleSoft\Compute Service\Login Keys\스타2\PrivateKey.ppk", FileMode.Open);
+            //MessageBox.Show(pks.ReadByte().ToString());
+            SSHclient sSHclient = new SSHclient("35.234.49.93", 22, "fizz10wkddls", "tmxk210Rnfwoa");
+            MessageBox.Show(sSHclient.RunCommand("pwd"));            
+        }
     }
 }

@@ -124,6 +124,7 @@
             this.GetSSHbutton.TabIndex = 6;
             this.GetSSHbutton.Text = "Get Ssh";
             this.GetSSHbutton.UseVisualStyleBackColor = true;
+            this.GetSSHbutton.Click += new System.EventHandler(this.GetSSHbutton_Click);
             // 
             // ComputeApiForm
             // 
